@@ -311,7 +311,7 @@ a {
   line-height: 1.5;
   color: #000;
 }
-.bubbleleft{
+.bubble-text.bubbleleft{
   top:26% !importent
 }
 .bubble-text strong {
