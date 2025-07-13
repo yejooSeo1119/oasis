@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OASIS MARKETING</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+    <body class="login-page">
+
+    <!-- 공통 네비게이션 -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="./img/logo_black.png" class="logo-white" alt="로고 검정" />
+            </div>
+            <ul class="gnb">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">마케팅서비스</a></li>
+                <li><a href="#">상담문의</a></li>
+                <li><a href="login.html">로그인/회원가입</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="formWrap">
+  <form class="subscription-form" method="post" action="/Exec">
+    <h2>구독 신청서</h2>
+
+    <label for="name">성함</label>
+    <input type="text" id="name" name="customer_name" required>
+
+    <label for="phone">휴대폰 연락처</label>
+    <input type="text" id="phone" name="customer_phone" required>
+
+    <label for="link">플레이스 링크</label>
+    <input type="url" id="link" name="place_link" required>
+
+    <label for="plan">구독 서비스 플랜</label>
+    <select id="plan" name="plan" required>
+      <option value="">플랜을 선택하세요</option>
+      <option value="light">라이트</option>
+      <option value="basic">베이직</option>
+      <option value="standard">스탠다드</option>
+      <option value="premium">프리미엄</option>
+    </select>
+
+    <label for="months">개월 수</label>
+<select id="months" name="months" required>
+  <option value="">개월 수를 선택하세요</option>
+  <option value="1">1개월</option>
+  <option value="2">2개월</option>
+  <option value="3">3개월</option>
+  <option value="4">4개월</option>
+  <option value="5">5개월</option>
+  <option value="6">6개월</option>
+  <option value="7">7개월</option>
+  <option value="8">8개월</option>
+  <option value="9">9개월</option>
+  <option value="10">10개월</option>
+  <option value="11">11개월</option>
+  <option value="12">12개월</option>
+</select>
+
+
+    <label for="payment">결제 수단</label>
+    <select id="payment" name="payment_method" required>
+      <option value="">결제 수단 선택</option>
+      <option value="card">신용카드</option>
+      <option value="bank">계좌이체</option>
+      <option value="kakao">카카오페이</option>
+    </select>
+
+    <label for="terms">약관 동의</label>
+    <textarea id="terms" readonly>
+• 수집 항목: 아이디, 비밀번호, 휴대폰번호, 이메일, 거주지역
+• 수집 목적: 구독 서비스 제공 및 고객 응대
+• 보유 기간: 회원 탈퇴 시까지 (관련 법령에 따라 별도 보관 가능)
+    </textarea>
+
+    <div class="checkbox-row">
+  <input type="checkbox" id="agree" />
+  <label for="agree">위 내용을 읽고 동의합니다.</label>
+</div>
+
+    <button type="submit" class="submit">구독 신청하기</button>
+  </form>
+  </div>
+</body>
+</html>

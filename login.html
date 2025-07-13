@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OASIS MARKETING</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="login-page">
+  <nav class="nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="./img/logo_black.png" class="logo-white" alt="오아시스 마케팅 로고 (블랙)">
+    </div>
+    <ul class="gnb">
+      <li><a href="#">회사소개</a></li>
+      <li><a href="#">마케팅서비스</a></li>
+      <li><a href="#">상담문의</a></li>
+      <li><a href="login.html">로그인/회원가입</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <section class="auth-section login-section">
+    <div class="auth-container">
+      <h2 class="auth-title">로그인</h2>
+      <form method="post" action="/exec/front/Member/Login/">
+        <div class="input-group">
+          <label for="member_id">아이디</label>
+          <input type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요" required />
+        </div>
+
+        <div class="input-group">
+          <label for="member_passwd">비밀번호</label>
+          <input type="password" id="member_passwd" name="member_passwd" placeholder="비밀번호를 입력하세요" required />
+        </div>
+
+        <button type="submit" class="auth-button">로그인</button>
+      </form>
+
+      <div class="auth-footer">
+        <p>계정이 없으신가요? <a href="signup.html">회원가입</a></p>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>

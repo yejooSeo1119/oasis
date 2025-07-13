@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OASIS MARKETING</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="login-page">
+
+    <!-- 공통 네비게이션 -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="./img/logo_black.png" class="logo-white" alt="로고 검정" />
+            </div>
+            <ul class="gnb">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">마케팅서비스</a></li>
+                <li><a href="#">상담문의</a></li>
+                <li><a href="login.html">로그인/회원가입</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 회원가입 영역 -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="form-title">회원가입</h2>
+            <form action="#" method="post" class="form-box">
+                <label>
+                    <span>사용 아이디</span>
+                    <input type="text" name="username" placeholder="아이디를 입력하세요" required />
+                </label>
+                <label>
+                    <span>비밀번호</span>
+                    <input type="password" name="password" placeholder="비밀번호를 입력하세요" required />
+                </label>
+                <label>
+                    <span>휴대폰번호</span>
+                    <input type="tel" name="phone" placeholder="숫자만 입력하세요" required />
+                </label>
+                <label>
+                    <span>이메일</span>
+                    <input type="email" name="email" placeholder="이메일 주소 입력" required />
+                </label>
+                <label>
+                    <span>거주지역</span>
+                    <input type="text" name="region" placeholder="예: 서울특별시 강남구" required />
+                </label>
+                <div class="form-group">
+  <label class="form-label">개인정보 수집 및 이용 동의</label>
+  <div class="terms-content-scroll">
+    아래와 같은 개인정보를 수집합니다.<br /><br />
+    ▪ 수집 항목: 아이디, 비밀번호, 휴대전화번호, 이메일, 거주지역<br />
+    ▪ 수집 목적: 회원 식별 및 서비스 제공, 상담 대응, 마케팅 정보 제공<br />
+    ▪ 보유 기간: 회원 탈퇴 시까지 (관련 법령에 따라 별도 보관 가능)
+  </div>
+ <div class="agree-row">
+    <input type="checkbox" name="agree" required />
+    <span>위 내용을 읽고 동의합니다.</span>
+  </div>
+
+                <button type="submit" class="btn-primary">회원가입</button>
+                <p class="form-link">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+            </form>
+        </div>
+    </section>
+
+</body>
+
+</html>
