@@ -5,7 +5,13 @@
    font-family: 'Pretendard', sans-serif;
   word-break: keep-all;
 }
-
+  @font-face {
+     font-family: 'Pretendard';
+     src: url('Pretendard-Regular.woff2') format('woff2'),
+          url('Pretendard-Regular.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+   }
 body {
   background: white;
   color: #222;
@@ -618,7 +624,7 @@ nav.scrolled .logo img {
 .card-features li {
   display: flex;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 12px;
   color: #222;
 }
@@ -630,6 +636,25 @@ nav.scrolled .logo img {
 .check-icon {
   margin-right: 8px;
   flex-shrink: 0;
+}
+.card-features strong{
+  margin: 0 3px;
+}
+.card-feature {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-feature li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.card-note {
+  margin-left: 23px; /* 아이콘 기준 여백 */
+  font-size: 12px !important;
+  color: #797979 !important;
+  line-height: 0.5 !important;
 }
 
 @media (max-width: 768px) {
@@ -659,7 +684,7 @@ nav.scrolled .logo img {
   display: inline-block;
   padding: 10px 35px;
   border-radius: 12px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 20px;
 }
@@ -678,7 +703,7 @@ nav.scrolled .logo img {
   padding: 12px 30px;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   text-decoration: none;
   display: inline-block;
 }
@@ -687,10 +712,11 @@ nav.scrolled .logo img {
 .price-card .active {
   display: block;
   background: #005ef5;
-  padding: 10px 30px;
+  padding: 10px 0;
   text-align: center;
   color: white;
   border-radius: 10px;
+  
 }
 
 
@@ -706,9 +732,9 @@ nav.scrolled .logo img {
 }
 
 .process-section .section-subtitle {
+  color: #005ef5;
   font-size: 1.5rem;
   font-weight: 600;
-  color: white;
   margin-bottom: 10px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -716,7 +742,6 @@ nav.scrolled .logo img {
 .process-section .section-title {
   font-size: 2.8rem;
   font-weight: 900;
-  color: white;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 50px;
 }
@@ -851,7 +876,7 @@ font-size: 2.8rem;
 
 .section-title {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 700;
   background: #4c55ff;
   color: #fff;
@@ -1349,43 +1374,54 @@ font-size: 2.8rem;
 }
 
 /* 오른쪽 영역 */
+.partner-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.partner-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.partner-slide {
+  flex: 0 0 100%; /* 슬라이드 하나가 전체 영역 */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.partner-slide img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
 .partner-right {
   flex: 2 1 700px;
   position: relative;
   overflow: hidden;
 }
 
-.partner-slider-wrapper {
-  width: 100%;
+.slider-container {
   overflow: hidden;
+  width: 100%;
+  position: relative;
 }
 
-.partner-slider {
+.slider-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease;
 }
 
-.partner-slide {
+.slide {
   flex: 0 0 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 30px;
-  padding: 20px 0;
+  text-align: center;
 }
-
-.partner-slide img {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.partner-slide img:hover {
-  transform: scale(1.05);
-}
-
-
 
 
 /* 푸터 */
