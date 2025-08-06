@@ -1472,7 +1472,6 @@ nav.scrolled .logo img {
 }
 
 .logo img {
-  height: 30px;
   transition: opacity 0.3s ease;
 }
 
@@ -2055,10 +2054,11 @@ select {
     .profile-images {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 30px;
+      margin-bottom: 30px;
     }
     .profile-images img {
-      width: 300px;
+      width: 500px;
       border-radius: 8px;
       object-fit: cover;
     }/* ===== 프로필 구역 ===== */
