@@ -5,23 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OASIS MARKETING</title>
-    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body class="login-page">
   <nav class="nav">
-  <div class="nav-inner">
-    <div class="logo" onclick="location.href='index.html'">
-      <img src="./img/logo_wh.png" class="logo-white" alt="오아시스 마케팅 로고 (화이트)">
-      <img src="./img/logo_black.png" class="logo-black" alt="오아시스 마케팅 로고 (블랙)">
+    <div class="nav-inner">
+      <div class="logo" onclick="location.href='index.html'">
+        <img src="./img/logo_black.png" class="logo-white" alt="오아시스 마케팅 로고 (화이트)">
+        <img src="./img/logo_black.png" class="logo-black" alt="오아시스 마케팅 로고 (블랙)">
+      </div>
+      <!-- 모바일 햄버거 버튼 -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="gnb">
+        <li><a href="#">상담문의</a></li>
+        <li><a href="login.html">로그인/회원가입</a></li>
+      </ul>
     </div>
-    <ul class="gnb">
-      <li><a href="#">상담문의</a></li>
-      <li><a href="login.html">로그인/회원가입</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
 
   <section class="auth-section login-section">
@@ -46,7 +52,38 @@
       </div>
     </div>
   </section>
+  <footer class="footer-wrapper">
+    <div class="footer-inner">
+      ⓒ 2025 OASIS MARKETING. All rights reserved.
+    </div>
+  </footer>
 
+
+
+  <!-- 모바일 햄버거 토글 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const gnb = document.querySelector(".gnb");
+
+      hamburger?.addEventListener("click", () => {
+        gnb.classList.toggle("active");
+      });
+    });
+  </script>
+
+  <!-- 상단 메뉴 컬러 변경 -->
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
 
 </body>
+
 </html>
