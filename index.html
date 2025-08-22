@@ -9,34 +9,36 @@
   <link rel="stylesheet" href="./css/style.css" />
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./js/script.js">
   <!-- slick css -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <!-- slick theme (optional) -->
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-</head>
+</head> 
 
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="logo" onclick="location.href='index.html'">
-        <img src="./img/logo_wh.png" class="logo-white" alt="오아시스 마케팅 로고 (화이트)">
-        <img src="./img/logo_black.png" class="logo-black" alt="오아시스 마케팅 로고 (블랙)">
-      </div>
-      <!-- 모바일 햄버거 버튼 -->
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul class="gnb">
-        <li><a href="#">상담문의</a></li>
-        <li><a href="login.html">로그인/회원가입</a></li>
-      </ul>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="location.href='index.html'">
+      <img src="./img/logo_wh.png" class="logo-white" alt="오아시스 마케팅 로고 (화이트)">
+      <img src="./img/logo_black.png" class="logo-black" alt="오아시스 마케팅 로고 (블랙)">
     </div>
-  </nav>
+
+    <!-- 햄버거 버튼 -->
+    <button class="hamburger" aria-label="메뉴" aria-controls="gnb" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- 서브메뉴 -->
+    <ul class="gnb" id="gnb">
+      <li><a href="subscribe.html">상담문의</a></li>
+      <li><a href="login.html">로그인/회원가입</a></li>
+    </ul>
+  </div>
+</nav>
+
+
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-container">
@@ -185,7 +187,7 @@
               <path
                 d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.192-4.24-4.242a1 1 0 0 0-1.414 1.414l4.949 4.95a1 1 0 0 0 1.414 0l9.897-9.896z" />
             </svg>
-            블로그 프리미엄 플랜 <strong> 5회</strong>
+            블로그 베이직 플랜 <strong> 10회</strong>
           </li>
         </ul>
       </div>
@@ -213,16 +215,16 @@
             </svg>
             인스타 <strong> 월 4회</strong> 업로드
           </li>
-          <li class="card-note">(단일 2회, 슬라이드 1회, 릴스 1회)</li>
+          <li class="card-note">(단일 2회, 슬라이드 2회)</li>
           <li>
             <svg class="check-icon" viewBox="0 0 24 24" width="16" height="16" fill="#000">
               <path
                 d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.192-4.24-4.242a1 1 0 0 0-1.414 1.414l4.949 4.95a1 1 0 0 0 1.414 0l9.897-9.896z" />
             </svg>
-            블로그 프리미엄 플랜 <strong> 5회</strong>
+            블로그 베이직 플랜 <strong> 5회</strong>
           </li>
           <li class="active mt30">
-            <strong>+ 블로그 베이직 플랜 10회</strong>
+            <strong>+ 블로그 방문체험단 1회</strong>
           </li>
         </ul>
       </div>
@@ -250,19 +252,19 @@
             </svg>
             인스타 <strong> 월 6회</strong> 업로드
           </li>
-          <li class="card-note">(단일 2회, 슬라이드 2회, 릴스 2회)</li>
+          <li class="card-note">(단일 3회, 슬라이드 2회, 릴스 1회)</li>
           <li>
             <svg class="check-icon" viewBox="0 0 24 24" width="16" height="16" fill="#000">
               <path
                 d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.192-4.24-4.242a1 1 0 0 0-1.414 1.414l4.949 4.95a1 1 0 0 0 1.414 0l9.897-9.896z" />
             </svg>
-            블로그 프리미엄 플랜 <strong>5회</strong>
+            블로그 베이직 플랜 <strong>10회</strong>
           </li>
           <li class="active mt30">
-            <strong>+ 블로그 베이직 플랜 10회</strong>
+            <strong>+ 블로그 방문체험단 2회</strong>
           </li>
           <li class="active">
-            <strong>+ 블로그 방문체험단 1회</strong>
+            <strong>+ 블로그 프리미엄 플랜 1회</strong>
           </li>
         </ul>
       </div>
@@ -509,7 +511,7 @@
           블로그 기자단을 통해 네이버 블로그에 자사 제품과 서비스를<br />
           자연스럽게 인기게시글로 노출 시킬 수 있습니다.<br />
           높은 검색 노출과 브랜드 신뢰도를 쌓아보세요!<br />
-          <small>*이미지는 랜덤 배정 됩니다</small>
+          <small>* 직접 방문하여 촬영된 이미지로 사용됩니다.</small>
         </p>
       </div>
       <div class="blog-grid" data-aos="fade-right" data-aos-delay="200">
@@ -615,135 +617,67 @@
     </div>
   </footer>
 
+
+
+
+  <script src="./js/script.js" defer></script> 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   <!-- 모바일 햄버거 토글 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const hamburger = document.querySelector(".hamburger");
-      const gnb = document.querySelector(".gnb");
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.nav');
+  const btn = document.querySelector('.hamburger');
+  const gnb = document.getElementById('gnb') || document.querySelector('.gnb');
 
-      hamburger?.addEventListener("click", () => {
-        gnb.classList.toggle("active");
-      });
-    });
-  </script>
+  // 헤더 높이를 CSS 변수로 내려서 드롭다운 top 계산
+  const setNavH = () => {
+    if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  };
+  setNavH(); window.addEventListener('resize', setNavH);
 
-  <!-- 상단 메뉴 컬러 변경 -->
-  <script>
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-  </script>
+  // 햄버거 토글
+  const closeMenu = () => { gnb?.classList.remove('active'); btn?.setAttribute('aria-expanded','false'); document.body.classList.remove('no-scroll'); };
+  btn?.addEventListener('click', () => {
+    const open = gnb?.classList.toggle('active');
+    btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('no-scroll', open);
+  });
+
+  // 바깥 클릭/ESC/데스크톱 전환 시 닫기
+  document.addEventListener('click', (e) => { if (gnb?.classList.contains('active') && !gnb.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  window.matchMedia('(min-width:1025px)').addEventListener('change', (m) => { if (m.matches) closeMenu(); });
+
+  // 스크롤 시 투명 → 흰 배경 (인덱스 기존 기능 유지)
+  window.addEventListener('scroll', () => nav?.classList.toggle('scrolled', window.scrollY > 50));
+});
+</script>
 
 
+<!-- 파트너 로고 슬라이더: 버튼이 없을 때 에러 방지 -->
+<script>
+(() => {
+  const slider = document.querySelector('.partner-slider');
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll('.partner-slide');
+  const prevBtn = document.querySelector('.partner-prev');
+  const nextBtn = document.querySelector('.partner-next');
+  let currentIndex = 0;
+
+  const update = () => { slider.style.transform = `translateX(-${currentIndex * 100}%)`; };
+  if (nextBtn) nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; update(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; update(); });
+})();
+</script>
+ 
+
+
+
+<!-- 인스타슬라이드 -->
   <!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // 일반 슬라이더 (좌우 버튼 있음)
-      const sliders = document.querySelectorAll('.slider-col');
-
-      sliders.forEach((sliderContainer) => {
-        const slider = sliderContainer.querySelector('.insta-slider');
-        const slides = slider.querySelectorAll('img');
-        const leftBtn = sliderContainer.querySelector('.slider-arrow.left');
-        const rightBtn = sliderContainer.querySelector('.slider-arrow.right');
-        let index = 0;
-
-        if (leftBtn && rightBtn) {
-          const updateSlider = () => {
-            slider.style.transform = `translateX(-${index * (slides[0].clientWidth + 20)}px)`;
-          };
-
-          leftBtn.addEventListener('click', () => {
-            index = (index - 1 + slides.length) % slides.length;
-            updateSlider();
-          });
-
-          rightBtn.addEventListener('click', () => {
-            index = (index + 1) % slides.length;
-            updateSlider();
-          });
-
-          window.addEventListener('resize', updateSlider);
-        }
-      });
-
-      // 콘텐츠 슬라이더 (왼쪽 버튼 하나, 무한 루프)
-      const contentSlider = document.getElementById("content-slider");
-      const contentLeftBtn = document.getElementById("content-left");
-
-      if (contentSlider && contentLeftBtn) {
-        let isSliding = false;
-
-        contentLeftBtn.addEventListener("click", () => {
-          if (isSliding) return;
-          isSliding = true;
-
-          contentSlider.style.transition = "transform 0.3s ease-in-out";
-          contentSlider.style.transform = "translateX(-100%)";
-
-          setTimeout(() => {
-            contentSlider.appendChild(contentSlider.firstElementChild);
-            contentSlider.style.transition = "none";
-            contentSlider.style.transform = "translateX(0)";
-            isSliding = false;
-          }, 300);
-        });
-      }
-    });
-  </script> -->
-
-
-
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const contentSliders = document.querySelectorAll('.content-slider');
-
-      contentSliders.forEach((slider) => {
-        const arrow = slider.querySelector('.content-arrow.left');
-        if (!arrow) return;
-
-        arrow.addEventListener("click", () => {
-          const first = slider.querySelector("img:first-child");
-          slider.appendChild(first);
-        });
-      });
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const sliders = document.querySelectorAll(".content-slider-wrapper");
-
-      sliders.forEach((wrapper) => {
-        const slider = wrapper.querySelector(".content-slider");
-        const leftBtn = wrapper.querySelector(".content-arrow.left");
-        const rightBtn = wrapper.querySelector(".content-arrow.right");
-        const slides = slider.querySelectorAll("img");
-
-        let index = 0;
-
-        const updateSlider = () => {
-          slider.style.transform = `translateX(-${index * (slides[0].clientWidth + 20)}px)`;
-        };
-
-        leftBtn?.addEventListener("click", () => {
-          index = (index - 1 + slides.length) % slides.length;
-          updateSlider();
-        });
-
-        rightBtn?.addEventListener("click", () => {
-          index = (index + 1) % slides.length;
-          updateSlider();
-        });
-
-        window.addEventListener("resize", updateSlider);
-      });
-    });
-  </script> -->
-  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const sliders = document.querySelectorAll(".slider-col");
 
@@ -808,9 +742,56 @@
 
       });
     });
-  </script>
+  </script> -->
 
   <script>
+  $(function () {
+    /* 인스타 슬라이더 공통 */
+    $('.insta-slider').each(function () {
+      const $slider = $(this);
+      const $row = $slider.closest('.insta-row');
+      $slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,           // 커스텀 버튼 사용
+        adaptiveHeight: true,
+        mobileFirst: true,
+        responsive: [
+          { breakpoint: 768,  settings: { slidesToShow: 2, slidesToScroll: 2 } },
+          { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } }
+        ]
+      });
+      $row.find('.slider-arrow.left').on('click',  () => $slider.slick('slickPrev'));
+      $row.find('.slider-arrow.right').on('click', () => $slider.slick('slickNext'));
+    });
+
+    /* 컨텐츠 컨셉 섹션 슬라이더(모던/유머/추천/기타)도 동일 방식 */
+    $('.content-slider').each(function () {
+      const $slider = $(this);
+      const $wrap = $slider.closest('.content-slider-wrapper');
+      $slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,
+        adaptiveHeight: true,
+        mobileFirst: true,
+        responsive: [
+          { breakpoint: 768,  settings: { slidesToShow: 2, slidesToScroll: 2 } },
+          { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } }
+        ]
+      });
+      $wrap.find('.content-arrow.left').on('click',  () => $slider.slick('slickPrev'));
+      $wrap.find('.content-arrow.right').on('click', () => $slider.slick('slickNext'));
+    });
+  });
+</script>
+
+
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       const sliders = document.querySelectorAll(".content-slider-wrapper");
 
@@ -884,7 +865,7 @@
         });
       });
     });
-  </script>
+  </script> -->
 
   <!-- AOS JS (body 끝에 추가) -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

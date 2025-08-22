@@ -230,7 +230,7 @@ nav.scrolled .logo img {
 
 .hero-card img {
   width: 60px;
-  height: 603px;
+  height: 60px;
 }
 
 .hero-card p {
@@ -1465,7 +1465,7 @@ nav.scrolled .logo img {
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 0 ;
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1485,6 +1485,13 @@ nav.scrolled .logo img {
 
 .nav.scrolled .logo-black {
   display: inline;
+}
+
+/* nav 자체가 다른 요소에 가려질 경우 대비 */
+.nav {
+  z-index: 1000;
+  position: sticky;
+  top: 0;
 }
 
 .gnb {
@@ -1742,11 +1749,8 @@ nav.scrolled .logo img {
 
 
 /****************** subscribe *******************/
-.formWrap {
-  margin-top: 150px;
-}
-
-.subscription-form, .consulting-section {
+.subscription-form,
+.consulting-section {
   max-width: 500px;
   margin: auto;
   background: #fff;
@@ -1755,14 +1759,16 @@ nav.scrolled .logo img {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.subscription-form h2, .consulting-section h2 {
+.subscription-form h2,
+.consulting-section h2 {
   font-size: 1.6rem;
   margin-bottom: 30px;
   text-align: center;
   color: #3b47ff;
 }
 
-.subscription-form label, .consulting-section label {
+.subscription-form label,
+.consulting-section label {
   display: block;
   margin-bottom: 6px;
   font-weight: 600;
@@ -1772,10 +1778,9 @@ nav.scrolled .logo img {
 .subscription-form input,
 .subscription-form select,
 .subscription-form textarea,
- .consulting-section input,
- .consulting-section select,
- .consulting-section textarea
- {
+.consulting-section input,
+.consulting-section select,
+.consulting-section textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -1784,25 +1789,29 @@ nav.scrolled .logo img {
   font-size: 14px;
 }
 
-.subscription-form textarea, .consulting-section textarea {
+.subscription-form textarea,
+.consulting-section textarea {
   resize: vertical;
   height: 120px;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.subscription-form .checkbox-wrapper,.consulting-section .checkbox-wrapper{
+.subscription-form .checkbox-wrapper,
+.consulting-section .checkbox-wrapper {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   font-size: 14px;
 }
 
-.subscription-form .checkbox-wrapper input,.consulting-section .checkbox-wrapper input{
+.subscription-form .checkbox-wrapper input,
+.consulting-section .checkbox-wrapper input {
   margin-right: 8px;
 }
 
-.subscription-form button, .consulting-section button{
+.subscription-form button,
+.consulting-section button {
   width: 100%;
   background: #3b47ff;
   color: #fff;
@@ -1814,7 +1823,8 @@ nav.scrolled .logo img {
   cursor: pointer;
 }
 
-.subscription-form button:hover, .consulting-section button:hover{
+.subscription-form button:hover,
+.consulting-section button:hover {
   background: #2c35cc;
 }
 
@@ -1882,11 +1892,14 @@ select {
   }
 
   .gnb {
-    display: none;
     flex-direction: column;
     width: 100%;
     background: #fff;
     padding: 10px 0;
+  }
+
+  .gnb a {
+    color: #000;
   }
 
   .gnb.active {
@@ -1894,14 +1907,21 @@ select {
   }
 
   .hamburger {
-    display: block;
+    display: flex;
+    width: 25px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: 0;
+    z-index: 1100;
+    /* 메뉴보다 위 */
     cursor: pointer;
   }
 
   .hamburger span {
     display: block;
-    height: 3px;
-    background: #000;
+    height: 2px;
     border-radius: 3px;
   }
 
@@ -2000,6 +2020,20 @@ select {
   }
 }
 
+
+@media (max-width: 1024px) {
+
+  /* 숨김 기본값을 확실히! (다른 규칙 덮어쓰기) */
+  #gnb.gnb {
+    display: none !important;
+  }
+
+  /* 열렸을 때 표시 */
+  #gnb.gnb.active {
+    display: flex !important;
+  }
+}
+
 /* ----------------------------- */
 /* 햄버거 버튼 스타일 (모바일 전용) */
 /* ----------------------------- */
@@ -2013,64 +2047,165 @@ select {
   }
 }
 
-.hamburger span {
-  display: block;
-  height: 3px;
-  background: #000;
-  border-radius: 3px;
+
+@media (max-width:768px) {
+
+  /* ===== NAV / HAMBURGER / GNB (모바일 고정 오버레이) ===== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    transition: background .2s ease;
+  }
+
+  .nav.scrolled {
+    background: rgba(999, 999, 999, .65);
+    backdrop-filter: saturate(120%) blur(8px);
+  }
+
+  /* 스크롤 시 PC처럼 어둡게 */
+
+  .hamburger {
+    display: flex;
+    width: 28px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    z-index: 1100
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff
+  }
+
+  /* 기본 흰색 */
+  .nav.scrolled .hamburger span {
+    background: #111
+  }
+
+  #gnb.gnb {
+    position: fixed !important;
+    /* 헤더 아래로 고정 */
+    top: var(--nav-h, 64px);
+    /* JS로 계산한 헤더높이 */
+    left: 0;
+    right: 0;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    background: #fff;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 16px 28px rgba(0, 0, 0, .08);
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+    /* 무엇보다 위에! */
+  }
+
+  #gnb.gnb a {
+    color: #111;
+    font-weight: 700;
+    display: block;
+    padding: 12px 4px;
+
+    color: #111
+  }
+
+  .gnb.active {
+    display: flex;
+  }
+
+  .gnb li {
+    padding: 12px 16px;
+  }
+
+  .gnb a {
+    display: block;
+    font-weight: 600;
+  }
 }
 
-/* 로고 무한 롤링 */
-    .logo-slider {
-      overflow: hidden;
-       background: #f8f9ff;
-      padding: 15px 0;
-      margin-top: 150px;
-    }
-    .logo-track {
-      display: flex;
-      animation: scroll 25s linear infinite;
-    }
-    .logo-track img {
-      height: 40px;
-      margin: 0 30px;
-      object-fit: contain;
-    }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+/* 모바일 GNB 기본 숨김 */
+@media (max-width: 768px) {
+
+
+  /* 로고 무한 롤링 */
+  .logo-slider {
+    overflow: hidden;
+    background: #f8f9ff;
+    padding: 15px 0;
+    margin-top: 150px;
+  }
+
+  .logo-track {
+    display: flex;
+    animation: scroll 25s linear infinite;
+  }
+
+  .logo-track img {
+    height: 40px;
+    margin: 0 30px;
+    object-fit: contain;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
 
-    /* 프로필 이미지 3개 영역 */
-    .profile-section {
-      text-align: center;
-      margin: 30px 0;
+    100% {
+      transform: translateX(-50%);
     }
-    .profile-section h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .profile-images {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-    .profile-images img {
-      width: 500px;
-      border-radius: 8px;
-      object-fit: cover;
-    }/* ===== 프로필 구역 ===== */
+  }
+
+  /* 프로필 이미지 3개 영역 */
+  .profile-section {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .profile-section h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .profile-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .profile-images img {
+    width: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
+/* ===== 프로필 구역 ===== */
 /* ===== 반응형 ===== */
 @media (max-width: 768px) {
   .profile-images {
-    flex-direction: column; /* 세로 배치 */
+    flex-direction: column;
+    /* 세로 배치 */
     align-items: center;
   }
 
   .profile-images img {
-    width: 90%; /* 모바일 화면 넓게 */
+    width: 90%;
+    /* 모바일 화면 넓게 */
     max-width: 350px;
   }
 }
@@ -2090,9 +2225,9 @@ select {
   }
 }
 
-   
-    /* 폼 영역 */
-.consulting-section{
+
+/* 폼 영역 */
+.consulting-section {
   margin-bottom: 50px;
 }
 
@@ -2112,4 +2247,1262 @@ select {
 
 .consulting-form button:hover {
   background: linear-gradient(90deg, #2f39d4, #4b56d4);
+}
+
+/* ====== MOBILE (<=480px) 구독/폼 최적화 ====== */
+@media (max-width: 480px) {
+  nav {
+    padding: 8px 16px;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .formWrap {
+    margin-top: 100px;
+    padding: 0 16px;
+  }
+
+  .subscription-form {
+    padding: 24px 18px;
+    border-radius: 12px;
+  }
+
+  .subscription-form h2 {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .subscription-form label {
+    font-size: .9rem;
+  }
+
+  /* iOS 확대 방지 + 터치 최적화 */
+  .subscription-form input,
+  .subscription-form select,
+  .subscription-form textarea {
+    font-size: 16px;
+    /* iOS 줌 방지 */
+    padding: 14px;
+  }
+
+  .checkbox-row {
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .submit {
+    width: 100%;
+    padding: 14px;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+}
+
+/* 모바일 GNB를 내비 바로 아래 오버레이로 고정 */
+
+
+/* 터치 하이라이트 & 안전영역 */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .05);
+}
+
+@supports(padding:max(env(safe-area-inset-top))) {
+  body {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ===== Mobile: 모든 섹션 가운데 정렬(<=768px) ===== */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* 햄버거 선을 currentColor로 묶어서 색 전환을 한 줄로 */
+  .hamburger {
+    color: #fff;
+  }
+
+  /* 스크롤되면 헤더에 .scrolled 추가 → 햄버거 검정 */
+  header.scrolled .hamburger {
+    color: #111;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  /* (모바일) 드롭다운 폭을 헤더와 정확히 동일하게 */
+
+  .nav-inner {
+    position: static;
+  }
+
+  .gnb {
+    position: fixed;
+    /* 헤더 아래 전폭 오버레이 */
+    top: var(--header-h, 64px);
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    background: #fff;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 16px 28px rgba(0, 0, 0, .08);
+    z-index: 999;
+  }
+
+  /* 공통 타이틀/문구 */
+  .section_wrap,
+  .section-title,
+  .section-sub,
+  .section-subtitle,
+  .section-label {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HERO 영역 */
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    margin: 24px auto 0;
+    text-align: center;
+    align-items: center;
+    /* 내부 버튼/텍스트도 중앙 */
+  }
+
+  .hero-left .sub,
+  .hero-left .title,
+  .hero-left .desc {
+    text-align: center;
+  }
+
+  /* 히어로 카드 2개 좌우 정렬 */
+  .hero-right {
+    width: 100%;
+    margin: 32px 0 24px;
+    display: flex !important;
+    flex-direction: row !important;
+    /* 기존 column 무시 */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-card {
+    width: calc(50% - 6px) !important;
+    /* 화면 폭에 맞춰 2열 */
+    height: auto;
+    padding: 20px 12px;
+  }
+
+  .subscribe-section {
+    overflow: hidden;
+  }
+
+  /* 말풍선 옆에 이모지 배치 */
+  .subscribe-section .bubble-wrap {
+    width: 95%;
+    margin: 0 auto;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 0 0 550px;
+    /* 다음 섹션과 여유 */
+  }
+
+  /* 이모지 ↔ 말풍선 가로 배치 + 과대폭 방지 */
+  .subscribe-section .bubble-group {
+    position: relative !important;
+    display: flex !important;
+    /* ✅ flex로 변경 */
+    align-items: center;
+    gap: 12px;
+    width: min(560px, 92vw);
+    /* 화면 밖 넘침 방지 */
+    margin: 0 auto;
+  }
+
+  /* 이모지: 10% 확대 + 24px 아래 */
+  .subscribe-section .bubble-face {
+    position: static !important;
+    flex: 0 0 auto;
+    width: clamp(72px, 20vw, 110px);
+    height: auto;
+    transform: translateY(100px) scale(1.1);
+    transform-origin: center bottom;
+    margin: 0;
+  }
+
+  /* 말풍선 이미지(배경+텍스트) 영역은 유연 폭 */
+  /* 말풍선 배경 이미지 */
+  .subscribe-section .bubble-svg {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .subscribe-section .bubble-svg img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+
+  /* 오른쪽 말풍선(2,4)은 이모지가 오른쪽으로 가도록 */
+  /* 오른쪽 말풍선은 열 순서 반대로 */
+  .subscribe-section .bubble2,
+  .subscribe-section .bubble4 {
+    flex-direction: row-reverse;
+  }
+
+  /* 말풍선 내부 텍스트(반응형 폰트) */
+  /* 텍스트: 줄 수와 무관하게 '수직 중앙' 고정 */
+  .subscribe-section .bubble-text {
+    position: absolute;
+    top: 43% !important;
+    left: 10%;
+    width: 80%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: clamp(12px, 3.7vw, 14px);
+    line-height: 1.45;
+  }
+
+  /* 개별 오프셋 클래스 무력화 */
+  .subscribe-section .bubble-text.text2,
+  .subscribe-section .bubble-text.text4 {
+    top: 42% !important;
+  }
+
+  /* 가격 소개의 ✔️ 항목 가운데 정렬 */
+  .pricing-section .desc {
+    text-align: center;
+  }
+
+  .card-features {
+    align-self: center;
+  }
+
+  .card-features li {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .card-features li svg {
+    margin-right: 6px;
+  }
+
+  /* 온라인마케팅 프로세스: 2행 2열 + 정사각 */
+  .process-section .process-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    /* 기존 1열 덮어씀 */
+    gap: 12px;
+  }
+
+  .process-section .process-card {
+    aspect-ratio: 1 / 1;
+    padding: 14px;
+    justify-content: center;
+  }
+
+
+  /*  마케팅 서비스 소개(인스타) 슬라이드: 글 위 / 슬라이드 아래 + 버튼 여백 통일 */
+  .insta-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slider-col {
+    width: 100%;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .slider-arrow.left {
+    left: 12px !important;
+  }
+
+  .slider-arrow.right {
+    right: 12px !important;
+  }
+
+
+
+  /* 인스타/컨텐츠 섹션 */
+  .content-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .content-description {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .slider-col {
+    margin: 0 auto;
+  }
+
+  /* 프로세스 섹션 */
+  .process-section .process-grid {
+    justify-items: center;
+  }
+
+  .process-section .process-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 블로그 섹션 */
+  .blog-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .reverse-row {
+    flex-direction: column;
+  }
+
+  .text-col {
+    max-width: 550px;
+    margin: 0 auto 24px;
+    text-align: center;
+  }
+
+  .text-col.right-align {
+    text-align: center;
+  }
+
+  .blog-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 480px;
+  }
+
+  .blog-grid img {
+    width: 100%;
+    height: auto;
+  }
+
+
+
+  /* 파트너 섹션 */
+  .partner-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .partner-left {
+    text-align: center;
+    flex: 1 1 0px;
+  }
+
+  /* 파트너사: 상하 여백 축소 */
+  .partner-section {
+    padding: 50px 0px 80px !important;
+  }
+
+  .partner-right {
+    margin-top: 12px;
+    flex: 0;
+  }
+
+
+  /* ===== Slick 호환 보정 ===== */
+  .insta-section .slider-col {
+    overflow: visible;
+  }
+
+  /* 화살표/그림자 잘림 방지 */
+
+  .insta-section .insta-slider.slick-initialized {
+    display: block;
+    /* 기존 flex 트랙 해제 */
+  }
+
+  .insta-section .insta-slider.slick-initialized img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0;
+    /* 기존 margin-right 제거 */
+  }
+
+  /* 슬라이드 사이 여백 */
+  .insta-section .slick-slide {
+    padding: 0 8px;
+  }
+
+  /* 좌/우 여백 */
+  .insta-section .slick-list {
+    margin: 0 -8px;
+  }
+
+  /* 전체 보정 */
+
+  /* ===== Slick 호환 보정 ===== */
+  .insta-section .insta-slider.slick-initialized,
+  .content-section .content-slider.slick-initialized {
+    display: block;
+  }
+
+  .insta-section .slick-slide,
+  .content-section .slick-slide {
+    padding: 0 8px;
+  }
+
+  .insta-section .slick-list,
+  .content-section .slick-list {
+    margin: 0 -8px;
+  }
+
+  /* 이미지 공통 */
+  .insta-section .insta-slider.slick-initialized img,
+  .content-section .content-slider.slick-initialized img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+}
+
+/* ===== 모바일에서 설명글이 위, 슬라이드가 아래 ===== */
+@media (max-width: 768px) {
+
+  /* 인스타 섹션 */
+  .insta-row .text-col {
+    order: 1;
+    margin: 0 0 16px;
+    max-width: 640px;
+    text-align: center;
+  }
+
+  .insta-row .slider-col {
+    order: 2;
+    width: 100%;
+  }
+
+  /* 컨텐츠 컨셉 섹션 */
+  .content-item .content-description-wrap {
+    order: 1;
+    margin: 0 0 16px;
+    text-align: center;
+  }
+
+  .content-item .content-slider-wrapper {
+    order: 2;
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   MOBILE 슬라이드 테두리/여백 보정
+   (insta-slider, content-slider 공통)
+   ========================= */
+@media (max-width: 768px) {
+
+  /* 1) 슬라이드 가장자리 여백(가터) */
+  .insta-section .slick-list,
+  .content-section .slick-list {
+    margin: 0 -12px;
+    /* 위 패딩과 동일 값 */
+    padding: 0 18px;
+    /* 화면 가장자리 여백 */
+    overflow: visible;
+  }
+
+  /* 2) 개별 슬라이드 카드화(라운드+클리핑) */
+  .insta-section .slick-slide,
+  .content-section .slick-slide {
+    padding: 0 12px;
+    /* ← 이미지 사이 간격(가터) */
+    background: transparent;
+    /* 검은 바탕 제거 */
+    box-shadow: none;
+    border-radius: 20px !important;
+    overflow: visible;
+    /* 라운드/그림자 잘림 방지 */
+  }
+
+  .insta-section .slick-slide>*,
+  .content-section .slick-slide>* {
+    border-radius: 20px !important;
+    /* PC 톤에 맞춰 조절 가능(16~20px) */
+    overflow: hidden;
+    /* 캡션/이미지 함께 둥글게 잘리도록 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+    background: #000;
+    /* 이미지 여백 때 비침 방지(원하면 transparent) */
+  }
+
+  /* 3) 이미지 자체는 꽉 채우되 왜곡 없이 */
+  .insta-section .slick-slide img,
+  .content-section .slick-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 4) 화살표는 너무 바깥으로 붙지 않게 */
+  .insta-section .slider-arrow.left,
+  .content-section .content-arrow.left {
+    left: 10px;
+  }
+
+  .insta-section .slider-arrow.right,
+  .content-section .content-arrow.right {
+    right: 10px;
+  }
+
+  /* 5) 슬라이더 감싸는 컬럼이 잘라먹지 않게 */
+  .slider-col,
+  .content-slider-wrapper {
+    overflow: visible;
+  }
+}
+
+.slider-arrow.left {
+  left: 10px;
+}
+
+/* 컨텐츠 컨셉 슬라이더: slick용 간격 처리 */
+.content-slider .slick-slide {
+  margin: 0 10px !important;
+  /* 좌우 10px → 총 20px 간격 */
+}
+
+.content-slider .slick-list {
+  margin: 0 -10px;
+  /* 가장자리 보정 */
+}
+
+.content-slider img {
+  display: block;
+  /* 인라인 공백 제거 */
+  width: 100%;
+}
+
+/* 데스크톱에서 간격 좀 더 벌리고 싶으면 */
+@media (min-width: 1024px) {
+  .content-slider .slick-slide {
+    margin: 0 12px !important;
+  }
+
+  /* 총 24px */
+  .content-slider .slick-list {
+    margin: 0 -12px;
+  }
+}
+
+/* === unify all forms to signup look === */
+
+/* 바깥 섹션(배경/상하 여백) */
+.login-page .formWrap,
+.consulting-section,
+.auth-section {
+  padding: 120px 20px;
+  background: #f5f5ff;
+  min-height: 100vh;
+}
+
+/* 카드(폼 박스) 공통 크기/모양 */
+.subscription-form,
+.consulting-form,
+.auth-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+}
+
+/* 제목 */
+.subscription-form h2,
+.consulting-section h2,
+.auth-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3b47ff;
+  margin-bottom: 30px;
+}
+
+/* 레이블 & 필드 간격 */
+.subscription-form label,
+.consulting-form label,
+.input-group label,
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.subscription-form input,
+.subscription-form select,
+.subscription-form textarea,
+.consulting-form input,
+.consulting-form select,
+.consulting-form textarea,
+.auth-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+/* 약관/안내 스크롤 박스(텍스트영역 포함) */
+.subscription-form textarea[readonly],
+.consulting-form textarea[readonly],
+.terms-content-scroll {
+  max-height: 120px;
+  overflow-y: auto;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* 체크박스 행 통일 */
+.checkbox-row,
+.agree-row,
+.checkbox-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.checkbox-row input[type="checkbox"],
+.agree-row input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3b47ff;
+}
+
+/* 버튼을 .btn-primary 룩으로 통일 */
+.subscription-form .submit,
+.consulting-form button,
+.auth-button,
+.form-box .btn-primary {
+  width: 100%;
+  background: #3b47ff;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background .2s ease;
+  margin-top: 10px;
+}
+
+.subscription-form .submit:hover,
+.consulting-form button:hover,
+.auth-button:hover,
+.form-box .btn-primary:hover {
+  background: #2f39d4;
+}
+
+/* (선택) 모바일에서도 동일 패딩/라운드 유지하려면 */
+@media (max-width: 480px) {
+  .subscription-form {
+    padding: 40px 24px;
+    border-radius: 16px;
+  }
+
+  .consulting-form {
+    padding: 40px 24px;
+    border-radius: 16px;
+  }
+}
+
+
+/***** ① 상단 로고: 버튼 없는 무한 슬라이드 *****/
+:root {
+  --logo-gap: 56px;
+  /* 로고 사이 간격 */
+  --logo-size: 42px;
+  /* 로고 높이 */
+  --marquee-duration: 25s;
+  /* 한 바퀴 시간(HTML에 로고가 1세트+복제 1세트로 있어야 매끄러움) */
+}
+
+.logo-slider {
+  /* 기존 값 덮어쓰기 */
+  overflow: hidden;
+  background: #f8f9ff;
+  padding: 36px 0 24px;
+  margin-top: 0;
+  /* 이전 150px 제거 */
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  animation: logo-marquee var(--marquee-duration) linear infinite;
+  will-change: transform;
+}
+
+.logo-track img {
+  height: var(--logo-size);
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%);
+  opacity: .9;
+}
+
+/* 호버 시 일시정지 */
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* 접근성: 모션 최소화 */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* 모바일 살짝 축소 */
+@media (max-width:768px) {
+  :root {
+    --logo-gap: 28px;
+    --logo-size: 34px;
+  }
+}
+
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* 트랙 길이의 절반(=원본 1세트) 만큼 이동 */
+}
+
+/***** ② 프로필: 위 1개 + 아래 2개 (HTML 그대로 사용) *****/
+.profile-section {
+  padding: 24px 16px 0;
+}
+
+.profile-section>h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111;
+  margin: 12px 0 22px;
+}
+
+/* 공통 래퍼 */
+.profile-section .profile-images {
+  width: min(1100px, 94vw);
+  margin: 0 auto 24px;
+}
+
+.profile-section .profile-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+}
+
+/* 위 1개(와이드) */
+.profile-section .profile-images:first-of-type {
+  max-width: 740px;
+  margin-bottom: 28px;
+}
+
+/* 아래 2개 나란히 */
+.profile-section .profile-images+.profile-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+}
+
+/* 모바일 스택 */
+@media (max-width:768px) {
+  .profile-section .profile-images+.profile-images {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .profile-section .profile-images:first-of-type {
+    max-width: 680px;
+  }
+}
+
+/* (선택) 카드 높이 통일하고 싶다면 주석 해제
+.profile-section .profile-images + .profile-images img{ aspect-ratio:5/4; object-fit:cover; }
+.profile-section .profile-images:first-of-type img{ aspect-ratio:16/9; object-fit:cover; }
+*/
+
+/***** ③ 컨설팅 폼: 중앙 카드 정렬 *****/
+/* 섹션을 배경 래퍼로, 이전에 섹션에 들어간 카드 스타일을 해제/대체 */
+.consulting-section {
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #f5f7ff;
+  padding: 80px 16px;
+}
+
+.consulting-section>h2 {
+  text-align: center;
+  margin: 0 auto 22px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111;
+}
+
+/* 실제 카드 */
+.consulting-form {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+}
+
+.consulting-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.consulting-form input,
+.consulting-form select,
+.consulting-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.consulting-form .checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.consulting-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* 모바일 패딩 */
+@media (max-width:480px) {
+  .consulting-form {
+    padding: 32px 24px;
+  }
+}
+
+/***** MOBILE PACK (<=768px) *****/
+@media (max-width: 768px) {
+
+  /* ① 로고 슬라이드: 크기·간격·속도 다운 */
+  :root {
+    --logo-gap: 28px;
+    /* 간격 축소 */
+    --logo-size: 34px;
+    /* 로고 높이 축소 */
+    --marquee-duration: 28s;
+    /* 살짝 느리게 */
+  }
+
+  .logo-slider {
+    padding: 24px 0 16px;
+  }
+
+  /* ② 프로필: 1열 스택 + 여백 조정 */
+  .profile-section {
+    padding: 16px 12px 0;
+  }
+
+  .profile-section>h2 {
+    font-size: 1.1rem;
+    margin: 10px 0 18px;
+  }
+
+  .profile-section .profile-images {
+    width: min(100%, 600px);
+    margin: 0 auto 16px;
+  }
+
+  .profile-section .profile-images:first-of-type {
+    max-width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .profile-section .profile-images+.profile-images {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* 2열 -> 1열 */
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .profile-section .profile-images img {
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+  }
+
+  /* ③ 컨설팅 폼: 중앙 카드 + 터치 타깃 */
+  .consulting-section {
+    padding: 56px 12px;
+    background: #f5f7ff;
+  }
+
+  .consulting-section>h2 {
+    font-size: 1.1rem;
+    margin: 0 auto 18px;
+  }
+
+  .consulting-form {
+    max-width: 94vw;
+    margin: 0 auto;
+    padding: 28px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
+  }
+
+  .consulting-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .consulting-form input,
+  .consulting-form select,
+  .consulting-form textarea {
+    width: 100%;
+    font-size: 16px;
+    /* iOS 줌 방지 */
+    min-height: 44px;
+    /* 터치 타깃 */
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+
+  .consulting-form textarea {
+    min-height: 120px;
+    line-height: 1.5;
+  }
+
+  .consulting-form .checkbox-row {
+    gap: 10px;
+  }
+
+  .consulting-form button {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+}
+
+/***** SMALL MOBILE (<=480px) *****/
+@media (max-width: 480px) {
+  :root {
+    --logo-gap: 20px;
+    --logo-size: 28px;
+    --marquee-duration: 32s;
+    /* 더 부드럽게 */
+  }
+
+  .consulting-section {
+    padding: 48px 10px;
+  }
+
+  .consulting-form {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .profile-section .profile-images img {
+    border-radius: 12px;
+  }
+}
+
+/* === 모바일 프로필 정렬 FIX === */
+/* 1) 고정폭 제거 (모든 뷰포트 공통) */
+.profile-section .profile-images img {
+  width: 100% !important;
+  /* 500px 강제폭 덮어쓰기 */
+  height: auto !important;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+}
+
+/* 2) 모바일 배치 정리 */
+@media (max-width: 768px) {
+  .profile-section {
+    padding: 16px 12px 0;
+  }
+
+  /* 상단 1장 래퍼 */
+  .profile-section .profile-images:first-of-type {
+    max-width: 100%;
+    margin: 0 auto 18px;
+  }
+
+  /* 하단 2장 래퍼 → 1열 스택 + 동일 너비 */
+  .profile-section .profile-images+.profile-images {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    /* 한 줄씩 */
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  /* 혹시 flex 정렬이 남아있다면 무력화 */
+  .profile-section .profile-images {
+    display: block !important;
+    width: 100%;
+  }
+}
+
+/* 더 작은 화면 */
+@media (max-width: 480px) {
+  .profile-section .profile-images img {
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+  }
+}
+/* === 모바일 프로필 왼쪽 쏠림 FIX (HTML 그대로) === */
+
+/* 공통: 혹시 ul/li 구조일 때 기본 들여쓰기 제거 */
+.profile-section .profile-images{
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+/* 이미지 고정폭 제거 + 가운데 정렬 안전장치 */
+.profile-section .profile-images img{
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;              /* 이미지 폭이 100%가 아닐 때도 센터 */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* 모바일 레이아웃 중앙 정렬(래퍼 자체를 가운데로) */
+@media (max-width: 768px){
+  .profile-section{ padding: 16px 12px 0; }
+
+  /* 상단 1장: 래퍼 폭을 제한하고 auto 마진으로 정중앙 */
+  .profile-section .profile-images:first-of-type{
+    max-width: 600px;           /* 필요시 560~640px로 조절 */
+    margin: 0 auto 18px !important;
+    display: block !important;  /* flex/float 잔여값 무력화 */
+    float: none !important;
+  }
+
+  /* 하단 2장 묶음: 1열 스택 + 래퍼 중앙 정렬 */
+  .profile-section .profile-images + .profile-images{
+    max-width: 600px;
+    margin: 0 auto 16px !important;
+    display: grid !important;
+    grid-template-columns: 1fr; /* 2열 -> 1열 */
+    gap: 16px;
+    justify-items: center;      /* 이미지가 100% 미만일 때도 가운데 */
+  }
+}
+
+/* 더 작은 화면 */
+@media (max-width: 480px){
+  .profile-section .profile-images img{
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  }
+}
+/* === 모바일 프로세스 그리드 넘침 방지 최종 패치 === */
+@media (max-width: 768px) {
+  .process-section .process-grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important; /* 2열 유지 */
+    gap: 16px !important;
+    max-width: 560px;            /* 화면 밖 넘침 방지용 안전 폭 */
+    margin: 0 auto;              /* 가운데 정렬 */
+    padding: 0 12px;             /* 좌우 여백 */
+    box-sizing: border-box;
+  }
+
+  .process-section .process-card{
+    aspect-ratio: auto !important;   /* 정사각 강제 해제 → 내용 길어져도 높이만 늘어남 */
+    height: auto !important;
+  }
+
+  .process-section .process-card img{
+    width: clamp(64px, 20vw, 110px);
+    height: auto;
+  }
+}
+@media (max-width: 768px){
+  .process-section .process-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 16px !important;
+    max-width: 600px; margin: 0 auto; padding: 0 12px; box-sizing: border-box;
+  }
+  .process-section .process-card{
+    height: auto !important;               /* 측정 전 초기화 */
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 24px 18px;
+  }
+  .process-section .process-card img{ width: clamp(60px, 20vw, 90px); height: auto; }
+}
+
+/* === 서브페이지 공통(인덱스 제외) 패치 === */
+/* 서브페이지 body에 이미 쓰고 있는 클래스: .login-page */
+@media (max-width: 768px) {
+  /* 1) 햄버거 아이콘 항상 검정 */
+  body.login-page .hamburger span { background:#111 !important; }
+
+  /* 2) 드롭다운 패널 상단 밀착 (여분 간격 제거) */
+  body.login-page #gnb.gnb{
+    top: var(--nav-h, 64px) !important; /* 헤더 높이만큼 정확히 붙임 */
+    margin-top: 0 !important;
+  }
+}
+
+/* === 모바일 GNB: 최종 강제 규칙 === */
+@media (max-width:1024px){
+  .gnb{ display:none !important; }      /* 기본 숨김 */
+  .gnb.active{ display:flex !important; }  /* 클릭시 보임 */
+  .gnb{                                   /* 위치/레이어 재확인 */
+    position:fixed; top:var(--nav-h,64px); left:0; right:0;
+    width:100vw; box-sizing:border-box;
+    padding:14px 16px; background:#fff; border-radius:0 0 16px 16px;
+    box-shadow:0 16px 28px rgba(0,0,0,.08); flex-direction:column; gap:12px;
+    z-index:2000;
+  }
+  .hamburger{ display:flex; z-index:2100; } /* 버튼이 메뉴보다 위 */
+}
+/* 폼 제목을 카드 내부 스타일로 */
+.consulting-form .form-title{
+  text-align: center;
+  font-size: 1.5rem;        /* 더 크게 */
+  font-weight: 800;
+  color: #3b47ff;           /* 파란색 */
+  margin: 0 0 20px;         /* 카드 안 간격 */
+}
+@media (max-width: 480px){
+  .consulting-form .form-title{ font-size: 1.3rem; }
+}
+/* 브랜드 로고: 그레이스케일 해제 + 불투명도 100% */
+.brand-row .brand-list img,
+.logo-track img{
+  filter: none !important;
+  opacity: 1 !important;
+}
+/* === 모바일 로고 슬라이드 더 아래로 === */
+:root{ --brand-extra-offset: 24px; }  /* 기본 여유값 */
+
+@media (max-width: 768px){
+  :root{ --brand-extra-offset: 36px; } /* 태블릿/큰폰: 여유 더 줌 */
+
+  /* 로고 섹션(.brand-row 또는 .logo-slider) 모두 커버 */
+  .brand-row,
+  .logo-slider{
+    padding-top: calc(var(--nav-h, 64px) + var(--brand-extra-offset)) !important;
+    margin-top: 0 !important;  /* 위쪽 기존 마진 있으면 제거 */
+  }
+}
+
+@media (max-width: 480px){
+  :root{ --brand-extra-offset: 48px; } /* 작은폰: 더 넉넉하게 */
+}
+
+/* === 햄버거 버튼: 네모 문제 전면 해결(리셋 + 색 일원화) === */
+
+/* 1) 브라우저 기본 버튼 스타일 제거 */
+.hamburger{
+  appearance: none; -webkit-appearance: none;
+  background: transparent !important;
+  border: 0 !important; padding: 0 !important; margin: 0;
+  line-height: 1; box-shadow: none !important; outline: none;
+  width: 28px; height: 20px; /* 막대 3줄 영역 */
+  display: none;             /* 모바일에서만 보이도록 (아래 미디어쿼리에서 켬) */
+  color: #fff;               /* 기본 색: 흰색(투명 헤더 위) */
+  z-index: 1100;
+}
+
+/* 2) 막대 3줄은 currentColor로—색 변경을 한 군데서만 관리 */
+.hamburger span{
+  display: block; width: 100%; height: 2px; border-radius: 2px;
+  background: currentColor;                 /* ← 포인트 */
+  transition: background .2s ease, transform .2s ease;
+  box-shadow: 0 0 0.5px rgba(0,0,0,.25);    /* 밝은 배경에서 살짝 또렷하게 */
+}
+
+/* 3) 배경이 흰색일 때(스크롤 다운 등) → 검정 */
+.nav.scrolled .hamburger{ color:#111; }
+
+/* 4) 서브페이지(로그인/상세 등)에서는 항상 검정 */
+body.login-page .hamburger{ color:#111 !important; }
+
+/* 5) 표시 범위 (모바일만 노출) */
+@media (max-width: 1024px){
+  .hamburger{ display:flex; flex-direction:column; justify-content:space-between; }
+}
+@media (min-width: 1025px){
+  .hamburger{ display:none !important; }
 }
